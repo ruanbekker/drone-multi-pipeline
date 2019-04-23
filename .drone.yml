@@ -8,6 +8,7 @@ steps:
   commands:
   - sleep 10
   - echo done
+  - date
 
 - name: build2
   image: alpine
@@ -15,6 +16,7 @@ steps:
   commands:
   - sleep 10
   - echo done
+  - date
 
 ---
 kind: pipeline
@@ -26,6 +28,7 @@ steps:
   commands:
   - sleep 10
   - echo done
+  - date
 
 services:
 - name: redis
@@ -41,6 +44,7 @@ steps:
   commands:
   - sleep 10
   - echo done
+  - date
 
 depends_on:
 - frontend
