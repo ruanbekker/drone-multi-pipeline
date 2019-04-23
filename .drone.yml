@@ -3,14 +3,14 @@ name: frontend
 
 steps:
 - name: build
-  image: apine
+  image: alpine
   group: one
   commands:
   - time 10
   - echo done
 
 - name: build2
-  image: apine
+  image: alpine
   group: one
   commands:
   - time 10
