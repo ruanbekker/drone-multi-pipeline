@@ -6,14 +6,14 @@ steps:
   image: alpine
   group: one
   commands:
-  - time 10
+  - sleep 10
   - echo done
 
 - name: build2
   image: alpine
   group: one
   commands:
-  - time 10
+  - sleep 10
   - echo done
 
 ---
@@ -24,7 +24,7 @@ steps:
 - name: build
   image: alpine
   commands:
-  - time 10
+  - sleep 10
   - echo done
 
 services:
@@ -39,7 +39,7 @@ steps:
 - name: notify
   image: alpine
   commands:
-  - time 10
+  - sleep 10
   - echo done
 
 depends_on:
