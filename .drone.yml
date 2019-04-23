@@ -1,0 +1,47 @@
+kind: pipeline
+name: frontend
+
+steps:
+- name: build
+  image: apine
+  group: one
+  commands:
+  - time 10
+  - echo done
+
+- name: build2
+  image: apine
+  group: one
+  commands:
+  - time 10
+  - echo done
+
+---
+kind: pipeline
+name: backend
+
+steps:
+- name: build
+  image: alpine
+  commands:
+  - time 10
+  - echo done
+
+services:
+- name: redis
+  image: redis
+
+---
+kind: pipeline
+name: after
+
+steps:
+- name: notify
+  image: alpine
+  commands:
+  - time 10
+  - echo done
+
+depends_on:
+- frontend
+- backend
