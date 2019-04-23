@@ -51,9 +51,9 @@ steps:
   image: mongo:4
   commands:
   - sleep 5
-  - mongo --host mongo --eval "db.version()"
-  - mongo --host mongo --eval "db.foo.insert({\"name\": \"ruan\"})"
-  - mongo --host mongo --eval "db.foo.find_one({\"name\": \"ruan\"})"
+  - mongo --host mongo --eval 'db.version()'
+  - mongo --host mongo --eval 'db.foo.insert({"name": "ruan"})'
+  - mongo --host mongo --eval 'db.foo.find_one({"name": "ruan"})'
 
 - name: test
   image: test-redis
