@@ -33,12 +33,36 @@ steps:
 services:
 - name: redis
   image: redis
+  ports:
+  - 6379
+  
+- name: mongo
+  image: mongo:4
+  command: [ --smallfiles ]
+  ports:
+  - 27017
 
 ---
 kind: pipeline
 name: after
 
 steps:
+- name: test-mongodb
+  image: mongo:4
+  commands:
+  - sleep 5
+  - mongo --host mongo --eval "db.version()"
+  - mongo --host mongo --eval "db.foo.insert({\"name\": \"ruan\"})"
+  - mongo --host mongo --eval "db.foo.find_one({\"name\": \"ruan\"})"
+
+- name: test
+  image: test-redis
+  commands:
+  - sleep 5
+  - redis-cli -h redis ping
+  - redis-cli -h redis set FOO bar
+  - redis-cli -h redis get FOO
+
 - name: notify
   image: alpine
   commands:
