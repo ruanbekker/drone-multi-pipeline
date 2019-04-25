@@ -42,8 +42,8 @@ services:
   commands:
   - sleep 5
   - mongo --host mongo --eval "db.version()"
-  - bash write-mongo.sh
-  - bash read-mongo.sh
+  - bash write_mongo.sh
+  - bash read_mongo.sh
 ---
 kind: pipeline
 name: after
