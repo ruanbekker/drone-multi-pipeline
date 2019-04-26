@@ -42,8 +42,8 @@ services:
   commands:
   - sleep 5
   - mongo --host mongo --eval "db.version()"
-  - bash write_mongo.sh
-  - bash read_mongo.sh
+  - scripts/write_mongo.sh
+  - scripts/read_mongo.sh
 ---
 kind: pipeline
 name: after
@@ -55,6 +55,18 @@ steps:
   - sleep 10
   - echo done
   - date
+
+- name: test-mongod-writes
+  image: mongo:4
+  commands:
+  - echo "testing mongodb writes"
+  - scripts/read_mongo.sh
+
+- name: test-mongodb-reads
+  image: mongo:4
+  commands:
+  - echo "testing mongodb reads"
+  - scripts/read_mongo.sh
 
 depends_on:
 - frontend
