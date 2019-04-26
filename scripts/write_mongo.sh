@@ -2,6 +2,7 @@
 set -ex
 mongo mongo:27017/mydb <<EOF
 db.mycollection.insert({"name": "ruan", "transaction_price": 20});
+db.mycollection.insert({"name": "james", "transaction_price": 20});
 var txs = []
 for (var x = 0; x < 1000000 ; x++) {
  var transaction_types = ["credit card", "cash", "account"];
