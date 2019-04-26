@@ -1,3 +1,5 @@
+#!/bin/sh
+set -ex
 mongo mongo:27017/mydb <<EOF
 var txs = []
 for (var x = 0; x < 1000000 ; x++) {
@@ -14,3 +16,4 @@ for (var x = 0; x < 1000000 ; x++) {
  }
 db.mycollection.insert(txs);
 EOF
+echo "done writing"
