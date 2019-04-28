@@ -60,13 +60,11 @@ steps:
   image: mongo:4
   commands:
   - echo "testing mongodb writes"
-  - sh scripts/read_mongo.sh
 
 - name: test-mongodb-reads
   image: mongo:4
   commands:
   - echo "testing mongodb reads"
-  - sh scripts/read_mongo.sh
 
 depends_on:
 - frontend
